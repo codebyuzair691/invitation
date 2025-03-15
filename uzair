@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Invitation</title>
+  <style>
+    body {
+      background-color: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+
+    h2 {
+      font-family: Arial, sans-serif;
+      margin-bottom: 20px;
+    }
+
+    .envelope {
+      width: 90%;
+      max-width: 1200px;
+      height: auto;
+      aspect-ratio: 2 / 1;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .flap {
+      width: 100%;
+      height: 50%;
+      background-color: #ff0000;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: top;
+      transition: transform 1.5s ease-in-out;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transform: translateY(100%);
+      transition: transform 1.5s ease-in-out 0.5s;
+      background-image: url('invitation.png');
+    }
+
+    .envelope.open .flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope.open .card {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      .envelope {
+        width: 95%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Designed by Uzair Mustafa</h2>
+
+  <div class="envelope" id="envelope">
+    <div class="flap"></div>
+    <div class="card"></div>
+  </div>
+
+  <script>
+    const envelope = document.getElementById('envelope');
+
+    setTimeout(() => {
+      envelope.classList.add('open');
+    }, 1000);
+  </script>
+
+</body>
+</html>
